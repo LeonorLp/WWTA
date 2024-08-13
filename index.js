@@ -4,6 +4,8 @@ window.onload = () => {
     const pauseBtn = document.getElementById("pauseBtn");
     const play2Btn = document.getElementById("play2Btn");
 
+    let hidePauseBtnTimeout;
+
     // Initial setup
     playBtn.classList.remove('hidden'); // Show the play button initially
     pauseBtn.classList.add('hidden'); // Hide the pause button initially
@@ -32,37 +34,28 @@ window.onload = () => {
         }
     });
 
-    // Show pause button when clicking anywhere on the video while playing
-    video.addEventListener('click', () => {
-        if (!video.paused && pauseBtn.classList.contains('hidden')) {
+    // Show pause button and start timer to hide it after 3 seconds
+    function showPauseButton() {
+        if (!video.paused) {
             pauseBtn.classList.remove('hidden');
+            // Clear any previous timeout
+            clearTimeout(hidePauseBtnTimeout);
+            // Set timeout to hide pause button after 3 seconds
+            hidePauseBtnTimeout = setTimeout(() => {
+                if (!video.paused) {
+                    pauseBtn.classList.add('hidden');
+                }
+            }, 3000); // 3000 milliseconds = 3 seconds
         }
-    });
+    }
 
-    // Show pause button when clicking anywhere on the screen
+    // Show pause button on click anywhere on the screen
     document.addEventListener('click', (event) => {
-        // Check if the video is playing
         if (!video.paused) {
-            // Only show the pause button if it's not already visible
-            if (pauseBtn.classList.contains('hidden')) {
-                pauseBtn.classList.remove('hidden');
-            }
+            showPauseButton();
         }
     });
 
-    // Hide the pause button when the mouse leaves the video area
-    video.addEventListener('mouseleave', () => {
-        if (!video.paused) {
-            pauseBtn.classList.add('hidden');
-        }
-    });
-
-    // Optionally hide the pause button when clicking outside of the video container
-    document.addEventListener('click', (event) => {
-        if (!video.contains(event.target) && !event.target.classList.contains('control-button')) {
-            if (!video.paused) {
-                pauseBtn.classList.add('hidden');
-            }
-        }
-    });
-};
+    // Show pause button when clicking on the video
+    video.addEventListener('click', showPauseButton);
+}

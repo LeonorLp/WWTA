@@ -78,7 +78,7 @@ body {
 }
 
 #pauseBtn::before {
-    content: "\9612"; /* Unicode for pause icon */
+    content: "\23F8"; /* Unicode for pause icon */
     font-size: 30px;
     color: darkred; /* Dark red icon */
 }
