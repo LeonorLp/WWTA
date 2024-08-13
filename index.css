@@ -1,18 +1,20 @@
-body{
+body {
     margin: 0;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: black; /* Optional: to match the video background */
 }
+
 .video-container {
     position: relative;
     width: 80%;
     max-width: 1920px;
 }
 
-#video{
+#video {
     width: 100%;
     height: auto;
 }
