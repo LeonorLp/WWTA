@@ -5,40 +5,45 @@ window.onload = () => {
     function playPause() { 
         if (video.paused) {
             video.play();
-            playPauseBtn.classList.add('paused');
-            hideButton();
-        } else {
-            video.pause();
-            playPauseBtn.classList.remove('paused');
-            showButton();
+            playPauseBtn.classList.add('hidden');
+            createPauseButton(); // Create pause button when video starts playing
         }
     }
 
-    function hideButton() {
-        playPauseBtn.classList.add('hidden');
+    function createPauseButton() {
+        const pauseBtn = document.createElement('button');
+        pauseBtn.classList.add('paused');
+        pauseBtn.id = 'pauseBtn';
+        document.querySelector('.video-container').appendChild(pauseBtn);
+
+        pauseBtn.addEventListener('click', () => {
+            video.pause();
+            pauseBtn.remove(); // Remove the pause button when paused
+            playPauseBtn.classList.remove('hidden');
+        });
     }
 
-    function showButton() {
-        playPauseBtn.classList.remove('hidden');
-    }
-
-    // Event listeners
+    // Initial play button click event
     playPauseBtn.addEventListener('click', playPause);
 
-    video.addEventListener('mousemove', showButton);
-
-    let hideTimeout;
-    video.addEventListener('mousemove', () => {
-        clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(hideButton, 3000); // 3 seconds delay
+    // Show pause button on click anywhere on the video
+    video.addEventListener('click', () => {
+        if (!video.paused) {
+            const pauseBtn = document.getElementById('pauseBtn');
+            if (!pauseBtn) createPauseButton();
+        }
     });
 
+    // Remove pause button when the video is paused
     video.addEventListener('pause', () => {
-        showButton();
-        playPauseBtn.classList.add('paused');
+        const pauseBtn = document.getElementById('pauseBtn');
+        if (pauseBtn) pauseBtn.remove();
+        playPauseBtn.classList.remove('hidden');
     });
 
+    // Remove pause button when the video is played
     video.addEventListener('play', () => {
-        playPauseBtn.classList.remove('paused');
+        const pauseBtn = document.getElementById('pauseBtn');
+        if (pauseBtn) pauseBtn.remove();
     });
 }

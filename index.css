@@ -21,7 +21,7 @@ body {
     object-fit: cover;
 }
 
-button {
+button#playPauseBtn {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -36,7 +36,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
+    transition: opacity 0.3s ease;
     opacity: 0.8;
 }
 
@@ -46,11 +46,21 @@ button.hidden {
 }
 
 button.paused {
-    background-color: darkred; /* Dark red background when paused */
-    border-color: darkred; /* Change the border to dark red as well */
+    position: absolute;
+    bottom: 10%; /* Positioning the pause button at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: darkred; /* Dark red background */
+    border: none; /* No border for the pause button */
+    border-radius: 50%;
+    font-size: 0; /* Hide text content */
+    cursor: pointer;
+    opacity: 0.8;
 }
 
-button::before {
+button#playPauseBtn::before {
     content: "\25B6"; /* Unicode for play icon */
     font-size: 40px;
     color: white;
@@ -58,20 +68,6 @@ button::before {
 
 button.paused::before {
     content: "\23F8"; /* Unicode for pause icon */
-    font-size: 40px;
+    font-size: 30px;
     color: white;
-}
-
-button:hover.paused {
-    background-color: darkred;
-}
-
-button:hover {
-    background-color: white; /* Button will have a white background on hover */
-    border-color: white;
-    color: darkred;
-}
-
-button:hover::before {
-    color: darkred;
 }
