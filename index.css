@@ -21,49 +21,44 @@ body {
     object-fit: cover;
 }
 
-button {
-    background-color: transparent;
-    border: none;
+.control-button {
+    background-color: transparent; /* No background color */
+    border: 3px solid darkred; /* Dark red border */
     border-radius: 50%;
     cursor: pointer;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
+    transition: opacity 0.3s ease;
     opacity: 0.8;
-    font-size: 0; /* Hide any default text content */
+    font-size: 0; /* Hide text content */
+    position: absolute;
 }
 
 #playBtn {
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    border: 3px solid white;
 }
 
 #playBtn::before {
     content: "\25B6"; /* Unicode for play icon */
-    font-size: 50px;
-    color: white;
+    font-size: 40px;
+    color: darkred; /* Dark red icon */
 }
 
 #pauseBtn {
-    position: absolute;
     bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    border: 3px solid darkred;
 }
 
 #pauseBtn::before {
     content: "\23F8"; /* Unicode for pause icon */
-    font-size: 50px;
-    color: darkred;
+    font-size: 30px;
+    color: darkred; /* Dark red icon */
 }
 
 .hidden {
