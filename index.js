@@ -7,18 +7,18 @@ window.onload = () => {
     // Initial setup
     playBtn.classList.remove('hidden'); // Show the play button initially
     pauseBtn.classList.add('hidden'); // Hide the pause button initially
-    play2Btn.classList.add('hidden'); // Hide the play button initially
+    play2Btn.classList.add('hidden'); // Hide the secondary play button initially
 
     // Play button logic
     playBtn.addEventListener('click', () => {
         video.play();
-        playBtn.classList.add('hidden');  // Hide play button
+        playBtn.classList.add('hidden'); // Hide play button
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
     play2Btn.addEventListener('click', () => {
         video.play();
-        play2Btn.classList.add('hidden');  // Hide play button
+        play2Btn.classList.add('hidden'); // Hide secondary play button
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
@@ -26,23 +26,22 @@ window.onload = () => {
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
             video.pause();
-            play2Btn.classList.remove('hidden'); // Show play button
+            play2Btn.classList.remove('hidden'); // Show secondary play button
             pauseBtn.classList.add('hidden'); // Hide pause button
         }
     });
 
-    // Show pause button when clicking anywhere on the video while playing
-    video.addEventListener('click', () => {
-        if (!video.paused && pauseBtn.classList.contains('hidden')) {
-            pauseBtn.classList.remove('hidden');
-        }
-    });
-
-    // Ensure that clicking on the pause button hides it and shows play button
+    // Handle clicks on the video element
     video.addEventListener('click', () => {
         if (video.paused) {
-            playBtn.classList.remove('hidden');
-            pauseBtn.classList.add('hidden');
+            video.play();
+            playBtn.classList.add('hidden');  // Hide primary play button
+            play2Btn.classList.add('hidden'); // Hide secondary play button
+            pauseBtn.classList.remove('hidden'); // Show pause button
+        } else {
+            video.pause();
+            play2Btn.classList.remove('hidden'); // Show secondary play button
+            pauseBtn.classList.add('hidden'); // Hide pause button
         }
     });
 };
