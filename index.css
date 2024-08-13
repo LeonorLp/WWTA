@@ -10,7 +10,7 @@ body {
 
 .video-container {
     position: relative;
-    width: 80%;
+    width: 100%;
     max-width: 1920px;
 }
 
@@ -19,7 +19,7 @@ body {
     height: auto;
 }
 
-.ppcbtn {
+button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -39,7 +39,7 @@ body {
     opacity: 1;
 }
 
-.ppcbtn.hidden {
+button.hidden {
     opacity: 0;
     pointer-events: none;
 }
