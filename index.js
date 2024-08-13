@@ -2,7 +2,7 @@ var Video = document.getElementById("video");
 
 function playPause() { 
     if (myVideo.paused) 
-      myVideo.play(); 
+      Video.play(); 
     else 
-      myVideo.pause(); 
+      Video.pause(); 
   } 
