@@ -12,7 +12,7 @@ window.onload = () => {
     // Play button logic
     playBtn.addEventListener('click', () => {
         video.play();
-        playBtn.classList.add('hidden'); // Hide play button
+        playBtn.classList.add('hidden'); // Hide primary play button
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
@@ -25,20 +25,6 @@ window.onload = () => {
     // Pause button logic
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
-            video.pause();
-            play2Btn.classList.remove('hidden'); // Show secondary play button
-            pauseBtn.classList.add('hidden'); // Hide pause button
-        }
-    });
-
-    // Handle clicks on the video element
-    video.addEventListener('click', () => {
-        if (video.paused) {
-            video.play();
-            playBtn.classList.add('hidden');  // Hide primary play button
-            play2Btn.classList.add('hidden'); // Hide secondary play button
-            pauseBtn.classList.remove('hidden'); // Show pause button
-        } else {
             video.pause();
             play2Btn.classList.remove('hidden'); // Show secondary play button
             pauseBtn.classList.add('hidden'); // Hide pause button
