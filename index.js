@@ -1,8 +1,8 @@
-var Video = document.getElementById("video"); 
+var Videoideo = document.getElementById("video"); 
 
 function playpause() { 
-    if (Video.paused) 
-      Video.play(); 
+    if (video.paused) 
+      video.play(); 
     else 
-      Video.pause(); 
+      video.pause(); 
   } 
