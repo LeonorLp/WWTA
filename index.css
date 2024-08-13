@@ -28,16 +28,15 @@ button {
     transform: translate(-50%, -50%);
     width: 80px;
     height: 80px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
+    background-color: transparent;
+    border: 3px solid white; /* White stroke */
     border-radius: 50%;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
+    font-size: 0; /* Hide text content */
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
     opacity: 0.8;
 }
 
@@ -47,6 +46,32 @@ button.hidden {
 }
 
 button.paused {
-    background-color: rgba(255, 0, 0, 0.7); /* Color when paused */
+    background-color: darkred; /* Dark red background when paused */
+    border-color: darkred; /* Change the border to dark red as well */
+}
+
+button::before {
+    content: "\25B6"; /* Unicode for play icon */
+    font-size: 40px;
     color: white;
+}
+
+button.paused::before {
+    content: "\23F8"; /* Unicode for pause icon */
+    font-size: 40px;
+    color: white;
+}
+
+button:hover.paused {
+    background-color: darkred;
+}
+
+button:hover {
+    background-color: white; /* Button will have a white background on hover */
+    border-color: white;
+    color: darkred;
+}
+
+button:hover::before {
+    color: darkred;
 }
