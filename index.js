@@ -20,18 +20,23 @@ window.onload = () => {
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
             video.pause();
-            pauseBtn.textContent = "Play";
-            pauseBtn.style.backgroundColor = "darkred";
+            pauseBtn.classList.add('playState');
             pauseBtn.style.width = "80px";
             pauseBtn.style.height = "80px";
-            pauseBtn.style.border = "none";
         } else {
             video.play();
             pauseBtn.classList.add('hidden'); // Hide the button again when the video plays
-            pauseBtn.textContent = "Pause"; // Revert the button text to Pause
+            pauseBtn.classList.remove('playState');
+        }
+    });
+
+    // Modify the pause button appearance when it changes to play state
+    pauseBtn.addEventListener('transitionend', () => {
+        if (pauseBtn.classList.contains('playState')) {
+            pauseBtn.classList.remove('playState');
             pauseBtn.style.backgroundColor = "darkred";
-            pauseBtn.style.width = "60px";
-            pauseBtn.style.height = "60px";
+            pauseBtn.style.width = "80px";
+            pauseBtn.style.height = "80px";
         }
     });
 }
