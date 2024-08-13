@@ -1,6 +1,6 @@
 var Video = document.getElementById("video"); 
 
-function playPause() { 
+function playpause() { 
     if (Video.paused) 
       Video.play(); 
     else 
