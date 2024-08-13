@@ -16,12 +16,20 @@ window.onload = () => {
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
+    playBtn.classList.add('hidden'); // Show the play button initially
+    pauseBtn.classList.add('hidden'); // Hide the pause button initially
+    play2Btn.classList.remove('hidden'); // Hide the play button initially
+
      // Play2 button logic
      play2Btn.addEventListener('click', () => {
         video.play();
         play2Btn.classList.add('hidden');  // Hide play button
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
+
+    playBtn.classList.add('hidden'); // Show the play button initially
+    pauseBtn.classList.remove('hidden'); // Hide the pause button initially
+    play2Btn.classList.add('hidden'); // Hide the play button initially
 
     // Pause button logic
     pauseBtn.addEventListener('click', () => {
