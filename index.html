@@ -15,7 +15,7 @@
 <button id="playPauseBtn" onclick="togglePlayPause()">Play/Pause</button>
 
 <!-- YouTube IFrame API script -->
-<script src="https://www.youtube.com/watch?v=R09zRhsRS3I"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
     let player;
@@ -25,7 +25,7 @@
         player = new YT.Player('player', {
             height: '360',
             width: '640',
-            videoId: 'YOUR_VIDEO_ID_HERE', // Replace with your video ID
+            videoId: 'https://www.youtube.com/watch?v=R09zRhsRS3I', // Replace with your video ID
             events: {
                 'onReady': onPlayerReady,
             }
