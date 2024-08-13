@@ -3,8 +3,9 @@ window.onload = () => {
     const playBtn = document.getElementById("playBtn");
     const pauseBtn = document.getElementById("pauseBtn");
 
-    // Show the play button initially
-    playBtn.classList.remove('hidden');
+    // Initial setup
+    playBtn.classList.remove('hidden'); // Show the play button initially
+    pauseBtn.classList.add('hidden'); // Hide the pause button initially
 
     // Play button logic
     playBtn.addEventListener('click', () => {
@@ -17,7 +18,7 @@ window.onload = () => {
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
             video.pause();
-            playBtn.classList.remove('hidden');  // Show play button
+            playBtn.classList.remove('hidden'); // Show play button
             pauseBtn.classList.add('hidden'); // Hide pause button
         }
     });
