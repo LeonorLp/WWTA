@@ -8,6 +8,7 @@ window.onload = () => {
     initialPlayBtn.addEventListener('click', () => {
         video.play();
         initialPlayBtn.classList.add('hidden'); // Hide initial play button
+        pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
     // Pause button logic
@@ -24,11 +25,18 @@ window.onload = () => {
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
-    // Show the pause button when the video is clicked
+    // Show the pause button when clicking on the video
     video.addEventListener('click', () => {
         if (!video.paused) {
             pauseBtn.classList.remove('hidden'); // Show pause button
-            resumePlayBtn.classList.add('hidden'); // Hide resume play button
+        }
+    });
+
+    // Hide pause button and show resume button when clicking on the video while paused
+    video.addEventListener('click', () => {
+        if (video.paused) {
+            resumePlayBtn.classList.remove('hidden'); // Show resume play button
+            pauseBtn.classList.add('hidden'); // Hide pause button
         }
     });
 }
