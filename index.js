@@ -30,7 +30,7 @@ window.onload = () => { // Ensure script runs after the page is fully loaded
     let hideTimeout;
     video.addEventListener('mousemove', () => {
         clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(hideButton, 3000); // 3 seconds delay
+        hideTimeout = setTimeout(hideButton, 1000); // 3 seconds delay
     });
 
     video.addEventListener('pause', showButton);
