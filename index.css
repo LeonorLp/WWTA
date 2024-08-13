@@ -21,11 +21,7 @@ body {
     object-fit: cover;
 }
 
-button#playPauseBtn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+button {
     width: 80px;
     height: 80px;
     background-color: transparent;
@@ -40,34 +36,38 @@ button#playPauseBtn {
     opacity: 0.8;
 }
 
-button.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-button.paused {
+#playBtn {
     position: absolute;
-    bottom: 10%; /* Positioning the pause button at the bottom */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    background-color: darkred; /* Dark red background */
-    border: none; /* No border for the pause button */
-    border-radius: 50%;
-    font-size: 0; /* Hide text content */
-    cursor: pointer;
-    opacity: 0.8;
+    transform: translate(-50%, -50%);
 }
 
-button#playPauseBtn::before {
+#playBtn::before {
     content: "\25B6"; /* Unicode for play icon */
     font-size: 40px;
     color: white;
 }
 
-button.paused::before {
+#pauseBtn {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: darkred;
+    border: none;
+    border-radius: 50%;
+}
+
+#pauseBtn::before {
     content: "\23F8"; /* Unicode for pause icon */
     font-size: 30px;
     color: white;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
