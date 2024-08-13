@@ -4,8 +4,6 @@ window.onload = () => {
     const pauseBtn = document.getElementById("pauseBtn");
     const play2Btn = document.getElementById("play2Btn");
 
-    let hidePauseBtnTimeout;
-
     // Initial setup
     playBtn.classList.remove('hidden'); // Show the play button initially
     pauseBtn.classList.add('hidden'); // Hide the pause button initially
@@ -18,7 +16,7 @@ window.onload = () => {
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
-    // Play2 button logic
+     // Play button logic
     play2Btn.addEventListener('click', () => {
         video.play();
         play2Btn.classList.add('hidden');  // Hide play button
@@ -34,28 +32,11 @@ window.onload = () => {
         }
     });
 
-    // Show pause button and start timer to hide it after 3 seconds
-    function showPauseButton() {
-        if (!video.paused) {
-            pauseBtn.classList.remove('hidden');
-            // Clear any previous timeout
-            clearTimeout(hidePauseBtnTimeout);
-            // Set timeout to hide pause button after 3 seconds
-            hidePauseBtnTimeout = setTimeout(() => {
-                if (!video.paused) {
-                    pauseBtn.classList.add('hidden');
-                }
-            }, 3000); // 3000 milliseconds = 3 seconds
-        }
-    }
 
-    // Show pause button on click anywhere on the screen
-    document.addEventListener('click', (event) => {
-        if (!video.paused) {
-            showPauseButton();
+    // Show pause button when clicking anywhere on the video while playing
+    video.addEventListener('click', () => {
+        if (!video.paused && pauseBtn.classList.contains('hidden')) {
+            pauseBtn.classList.remove('hidden');
         }
     });
-
-    // Show pause button when clicking on the video
-    video.addEventListener('click', showPauseButton);
 }
