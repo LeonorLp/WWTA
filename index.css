@@ -42,3 +42,8 @@ button.hidden {
     opacity: 0;
     pointer-events: none;
 }
+
+button.paused {
+    background-color: rgba(255, 0, 0, 0.7); /* Red color for the paused state */
+    color: white;
+}

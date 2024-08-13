@@ -6,10 +6,12 @@ window.onload = () => { // Ensure script runs after the page is fully loaded
         if (video.paused) {
             video.play();
             playPauseBtn.textContent = "Pause";
+            playPauseBtn.classList.add('paused'); // Add class for paused state
             hideButton();
         } else {
             video.pause();
             playPauseBtn.textContent = "Play";
+            playPauseBtn.classList.remove('paused'); // Remove class for paused state
             showButton();
         }
     }
@@ -30,8 +32,15 @@ window.onload = () => { // Ensure script runs after the page is fully loaded
     let hideTimeout;
     video.addEventListener('mousemove', () => {
         clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(hideButton, 2000); // 2 seconds delay
+        hideTimeout = setTimeout(hideButton, 2000); // 3 seconds delay
     });
 
-    video.addEventListener('pause', showButton);
+    video.addEventListener('pause', () => {
+        showButton();
+        playPauseBtn.classList.add('paused'); // Add class for paused state when video pauses
+    });
+
+    video.addEventListener('play', () => {
+        playPauseBtn.classList.remove('paused'); // Remove class when video plays
+    });
 }
