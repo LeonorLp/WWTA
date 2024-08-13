@@ -1,32 +1,34 @@
 window.onload = () => {
     const video = document.getElementById("video");
-    const playBtn = document.getElementById("playBtn");
+    const initialPlayBtn = document.getElementById("initialPlayBtn");
     const pauseBtn = document.getElementById("pauseBtn");
+    const resumePlayBtn = document.getElementById("resumePlayBtn");
 
-    // Initial setup
-    playBtn.classList.remove('hidden'); // Show the play button initially
-    pauseBtn.classList.add('hidden'); // Hide the pause button initially
-
-    // Play button logic
-    playBtn.addEventListener('click', () => {
+    // Initial Play button logic
+    initialPlayBtn.addEventListener('click', () => {
         video.play();
-        playBtn.classList.add('hidden');  // Hide play button
-        pauseBtn.classList.remove('hidden'); // Show pause button
+        initialPlayBtn.classList.add('hidden'); // Hide initial play button
     });
 
     // Pause button logic
     pauseBtn.addEventListener('click', () => {
-        if (!video.paused) {
-            video.pause();
-            playBtn.classList.remove('hidden'); // Show play button
-            pauseBtn.classList.add('hidden'); // Hide pause button
-        }
+        video.pause();
+        pauseBtn.classList.add('hidden'); // Hide pause button
+        resumePlayBtn.classList.remove('hidden'); // Show resume play button
     });
 
-    // Show pause button when clicking anywhere on the video while playing
+    // Resume Play button logic
+    resumePlayBtn.addEventListener('click', () => {
+        video.play();
+        resumePlayBtn.classList.add('hidden'); // Hide resume play button
+        pauseBtn.classList.remove('hidden'); // Show pause button
+    });
+
+    // Show the pause button when the video is clicked
     video.addEventListener('click', () => {
-        if (!video.paused && pauseBtn.classList.contains('hidden')) {
-            pauseBtn.classList.remove('hidden');
+        if (!video.paused) {
+            pauseBtn.classList.remove('hidden'); // Show pause button
+            resumePlayBtn.classList.add('hidden'); // Hide resume play button
         }
     });
 }
