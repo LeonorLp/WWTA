@@ -7,31 +7,38 @@ window.onload = () => {
     playBtn.addEventListener('click', () => {
         video.play();
         playBtn.classList.add('hidden');  // Hide play button
-        pauseBtn.classList.remove('hidden');  // Show pause button
+    });
+
+    // Show pause button when clicking anywhere on the video while playing
+    video.addEventListener('click', () => {
+        if (!video.paused && pauseBtn.classList.contains('hidden')) {
+            pauseBtn.classList.remove('hidden');
+        }
     });
 
     // Pause button logic
     pauseBtn.addEventListener('click', () => {
-        video.pause();
-        pauseBtn.classList.add('hidden');  // Hide pause button
-        playBtn.classList.remove('hidden');  // Show play button
-    });
-
-    // Video play event
-    video.addEventListener('play', () => {
-        pauseBtn.classList.remove('hidden');
-    });
-
-    // Video pause event
-    video.addEventListener('pause', () => {
-        pauseBtn.classList.add('hidden');
-        playBtn.classList.remove('hidden');
-    });
-
-    // Show pause button when clicking on video during playback
-    video.addEventListener('click', () => {
         if (!video.paused) {
-            pauseBtn.classList.remove('hidden');
+            video.pause();
+            pauseBtn.classList.add('playState');
+        } else {
+            video.play();
+            pauseBtn.classList.add('hidden'); // Hide the button again
+        }
+    });
+
+    // Modify the pause button appearance when it changes to play state
+    pauseBtn.addEventListener('transitionend', () => {
+        if (pauseBtn.classList.contains('playState')) {
+            pauseBtn.classList.remove('playState');
+            pauseBtn.textContent = "Play";
+            pauseBtn.style.backgroundColor = "darkred";
+            pauseBtn.style.width = "80px";
+            pauseBtn.style.height = "80px";
+            pauseBtn.style.border = "none";
+            pauseBtn.style.fontSize = "30px";
+        } else {
+            pauseBtn.textContent = "";
         }
     });
 }
