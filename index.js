@@ -16,6 +16,13 @@ window.onload = () => {
         pauseBtn.classList.remove('hidden'); // Show pause button
     });
 
+     // Play2 button logic
+     play2Btn.addEventListener('click', () => {
+        video.play();
+        play2Btn.classList.add('hidden');  // Hide play button
+        pauseBtn.classList.remove('hidden'); // Show pause button
+    });
+
     // Pause button logic
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
@@ -24,6 +31,7 @@ window.onload = () => {
             pauseBtn.classList.add('hidden'); // Hide pause button
         }
     });
+
 
     // Show pause button when clicking anywhere on the video while playing
     video.addEventListener('click', () => {
