@@ -4,16 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Where the Wild Things Are</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer></script> <!-- Ensure JavaScript is loaded after HTML -->
+    <link rel="stylesheet" >
+   
 </head>
 <body>
-    <div class="video-container">
-        <video id="video">
-            <iframe src="https://www.youtube.com/watch?v=R09zRhsRS3I" controls="">
-            </iframe>
-            </video>
-        <button id="playPauseBtn">Play</button>
-    </div>
+<!-- The YouTube video iframe -->
+<div id="player"></div>
+
+<!-- Play/Pause button -->
+<button id="playPauseBtn" onclick="togglePlayPause()">Play/Pause</button>
+
+<!-- YouTube IFrame API script -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+    let player;
+
+    // Function to initialize the YouTube video player
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: 'YOUR_VIDEO_ID_HERE', // Replace with your video ID
+            events: {
+                'onReady': onPlayerReady,
+            }
+        });
+    }
+
+    // Function to be called when the player is ready
+    function onPlayerReady(event) {
+        document.getElementById('playPauseBtn').style.display = 'block';
+    }
+
+    // Function to toggle play/pause
+    function togglePlayPause() {
+        if (player.getPlayerState() == YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+        } else {
+            player.playVideo();
+        }
+    }
+</script>
+
 </body>
 </html>
