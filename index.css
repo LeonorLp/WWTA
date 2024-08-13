@@ -12,6 +12,7 @@ body {
     width: 100%;
     max-width: 1920px;
     height: auto;
+    overflow: hidden;
 }
 
 #video {
@@ -21,8 +22,8 @@ body {
 }
 
 .control-button {
-    background-color: transparent;
-    border: 3px solid;
+    background-color: transparent; /* No background color */
+    border: 3px solid darkred; /* Dark red border */
     border-radius: 50%;
     cursor: pointer;
     width: 80px;
@@ -30,51 +31,41 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0;
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+    font-size: 0; /* Hide text content */
     position: absolute;
 }
 
-.initial-play {
+#playBtn, #pauseBtn {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-color: white;
 }
 
-.initial-play::before {
+#playBtn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#playBtn::before {
     content: "\25B6"; /* Unicode for play icon */
     font-size: 40px;
-    color: white;
+    color: darkred; /* Dark red icon */
 }
 
-#pauseBtn {
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-color: darkred;
-    background-color: darkred;
+#pauseBtn.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 #pauseBtn::before {
     content: "\23F8"; /* Unicode for pause icon */
     font-size: 30px;
-    color: white;
-}
-
-#resumePlayBtn {
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-color: darkred;
-    background-color: transparent;
-}
-
-#resumePlayBtn::before {
-    content: "\25B6"; /* Unicode for play icon */
-    font-size: 30px;
-    color: darkred;
+    color: darkred; /* Dark red icon */
 }
 
 .hidden {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
 }
