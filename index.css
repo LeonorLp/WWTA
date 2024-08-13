@@ -1,8 +1,43 @@
 body{
+    margin: 0;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.video-container {
+    position: relative;
+    width: 80%;
+    max-width: 1920px;
 }
 
 #video{
-    width: 1280px;
-    height: 720px;
+    width: 100%;
+    height: auto;
+}
+
+.ppcbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.ppcbtn.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
