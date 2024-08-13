@@ -21,7 +21,7 @@ body {
     object-fit: cover;
 }
 
-.control-button, .control-button2 {
+.control-button, .control-button-2 {
     background-color: transparent; /* No background color */
     border-radius: 50%;
     cursor: pointer;
@@ -36,21 +36,21 @@ body {
     position: absolute;
 }
 
-#playBtn{
+#playBtn {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid white; /* Dark red border */
+    border: 3px solid white; /* White border */
 }
 
-#pauseBtn, #play2Btn{
+#pauseBtn, #play2Btn {
     bottom: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid darkred; /* Dark red border */
 }
 
-#playBtn.hidden {
+#playBtn.hidden, #play2Btn.hidden, #pauseBtn.hidden {
     opacity: 0;
     pointer-events: none;
 }
@@ -58,12 +58,7 @@ body {
 #playBtn::before {
     content: "\25B6"; /* Unicode for play icon */
     font-size: 40px;
-    color: white; /* Dark red icon */
-}
-
-#play2Btn.hidden {
-    opacity: 0;
-    pointer-events: none;
+    color: white; /* White icon */
 }
 
 #play2Btn::before {
@@ -72,18 +67,8 @@ body {
     color: darkred; /* Dark red icon */
 }
 
-#pauseBtn.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
 #pauseBtn::before {
     content: "\23F8"; /* Unicode for pause icon */
     font-size: 30px;
     color: darkred; /* Dark red icon */
-}
-
-.hidden {
-    opacity: 0;
-    pointer-events: none;
 }
