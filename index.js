@@ -11,7 +11,7 @@ window.onload = () => {
 
     // Show pause button when clicking anywhere on the video while playing
     video.addEventListener('click', () => {
-        if (!video.paused && pauseBtn.classList.contains('hidden')) {
+        if (!video.paused) {
             pauseBtn.classList.remove('hidden');
         }
     });
@@ -20,23 +20,12 @@ window.onload = () => {
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
             video.pause();
-            pauseBtn.classList.add('playState');
-            pauseBtn.style.width = "80px";
-            pauseBtn.style.height = "80px";
+            pauseBtn.style.backgroundColor = "darkred";
+            pauseBtn.innerHTML = "\u25B6"; // Play icon
         } else {
             video.play();
             pauseBtn.classList.add('hidden'); // Hide the button again when the video plays
-            pauseBtn.classList.remove('playState');
-        }
-    });
-
-    // Modify the pause button appearance when it changes to play state
-    pauseBtn.addEventListener('transitionend', () => {
-        if (pauseBtn.classList.contains('playState')) {
-            pauseBtn.classList.remove('playState');
-            pauseBtn.style.backgroundColor = "darkred";
-            pauseBtn.style.width = "80px";
-            pauseBtn.style.height = "80px";
+            pauseBtn.innerHTML = "\u23F8"; // Pause icon
         }
     });
 }

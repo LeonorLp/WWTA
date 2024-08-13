@@ -29,9 +29,9 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease, background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
     opacity: 0.8;
-    font-size: 0; /* Hide text content */
+    font-size: 0; /* Hide any default text content */
 }
 
 #playBtn {
