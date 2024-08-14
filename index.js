@@ -1,51 +1,52 @@
 window.onload = () => {
+    const videoContainer = document.querySelector('.video-container');
     const video = document.getElementById("video");
     const playBtn = document.getElementById("playBtn");
     const pauseBtn = document.getElementById("pauseBtn");
     const play2Btn = document.getElementById("play2Btn");
 
-    // Initial setup
-    playBtn.classList.remove('hidden'); // Show the play button initially
-    pauseBtn.classList.add('hidden'); // Hide the pause button initially
-    play2Btn.classList.add('hidden'); // Hide the secondary play button initially
+    // Function to adjust video container height
+    function adjustVideoContainerHeight() {
+        const viewportHeight = window.innerHeight;
+        videoContainer.style.height = `${viewportHeight}px`;
+    }
 
-    // Play button logic
+    // Initial setup
+    adjustVideoContainerHeight();
+    window.addEventListener('resize', adjustVideoContainerHeight);
+
+    // Other video controls
     playBtn.addEventListener('click', () => {
         video.play();
-        playBtn.classList.add('hidden'); // Hide primary play button
-        // The pause button will be shown when clicking anywhere on the screen
+        playBtn.classList.add('hidden');
         document.addEventListener('click', showPauseBtn);
     });
 
     play2Btn.addEventListener('click', () => {
         video.play();
-        play2Btn.classList.add('hidden'); // Hide secondary play button
-        // The pause button will be shown when clicking anywhere on the screen
+        play2Btn.classList.add('hidden');
         document.addEventListener('click', showPauseBtn);
     });
 
-    // Pause button logic
     pauseBtn.addEventListener('click', () => {
         if (!video.paused) {
             video.pause();
-            play2Btn.classList.remove('hidden'); // Show secondary play button
-            pauseBtn.classList.add('hidden'); // Hide pause button
+            play2Btn.classList.remove('hidden');
+            pauseBtn.classList.add('hidden');
         }
     });
 
-    // Function to show the pause button when clicking anywhere on the screen
     function showPauseBtn(event) {
         if (!video.paused) {
-            pauseBtn.classList.remove('hidden'); // Show pause button
+            pauseBtn.classList.remove('hidden');
         }
     }
 
-    // Hide the pause button when the video is paused or when playback is started again
     video.addEventListener('play', () => {
-        pauseBtn.classList.add('hidden'); // Hide pause button when video starts playing
+        pauseBtn.classList.add('hidden');
     });
 
     video.addEventListener('pause', () => {
-        pauseBtn.classList.add('hidden'); // Hide pause button when video is paused
+        pauseBtn.classList.add('hidden');
     });
 };
