@@ -58,7 +58,7 @@ window.onload = () => {
         resetHidePauseTimeout(); // Start the timeout to hide the pause button
     });
 
-    video.addEventListener('pause', () => 
+    video.addEventListener('pause', () => {
         pauseBtn.classList.add('hidden'); // Hide pause button when video is paused
         clearTimeout(hidePauseTimeout); // Clear the timeout if the video is paused
     });
