@@ -50,6 +50,7 @@ left: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid darkred; /* Dark red border */
+    background-color: white;
 }
 
 #playBtn.hidden, #play2Btn.hidden, #pauseBtn.hidden {
@@ -67,12 +68,12 @@ left: 0;
     content: "\25B6"; /* Unicode for play icon */
     font-size: 40px;
     color: darkred; /* Dark red icon */
-    background-color: white;
+    
 }
 
 #pauseBtn::before {
     content: "\23F8"; /* Unicode for pause icon */
     font-size: 30px;
     color: darkred; /* Dark red icon */
-    background-color: white;
+    
 }
